@@ -1,0 +1,131 @@
+
+
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML DOM Manipulation</title>
+    <script>
+        function validateForm(){
+            var firstname = document.getElementById('first name').value;
+            var lastname = document.getElementById('last name').value;
+            var mobile = document.getElementById('mobile').value;
+            var mobile = document.getElementById('mobile').value;
+            if(firstname===''){
+                if (firstname.length < 2 ||firstname.length >20){
+
+                alert("firstname can not be empty!!");
+            }else if(mobile.length !==10){
+                alert("mobile number should be 10 digit only");}
+                else{
+                alert(username+ " "+mobile);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <p><input type ="text" id = "username" placeholder = "Enter Username"/></p>
+         <p><input type ="text" id = "mobile" placeholder = "Enter mobile"/></p>
+
+    </form>
+    <button onclick="validateForm()">validate</button>
+    
+</body>
+</html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Bank</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f2f2f2;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 200px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Bank System</h2>
+  
+  <input type="number" id="amount" placeholder="Enter amount" />
+  <br>
+
+  <button onclick="deposit()">Deposit</button>
+  <button onclick="withdraw()">Withdraw</button>
+  <button onclick="checkBalance()">Check Balance</button>
+
+  <div id="output"></div>
+</div>
+
+<script>
+  let balance = 0;
+
+  function getAmount() {
+    return parseFloat(document.getElementById("amount").value);
+  }
+
+  function deposit() {
+    let amt = getAmount();
+    if (isNaN(amt) || amt <= 0) {
+      display("Enter valid amount");
+      return;
+    }
+    balance += amt;
+    display("Deposited: " + amt);
+  }
+
+  function withdraw() {
+    let amt = getAmount();
+    if (isNaN(amt) || amt <= 0) {
+      display("Enter valid amount");
+      return;
+    }
+    if (amt > balance) {
+      display("Insufficient balance");
+      return;
+    }
+    balance -= amt;
+    display("Withdrawn: " + amt);
+  }
+
+  function checkBalance() {
+    display("Current Balance: " + balance);
+  }
+
+  function display(msg) {
+    document.getElementById("output").innerText = msg;
+  }
+</script>
+
+</body>
+</html>
